@@ -69,3 +69,23 @@ def update_post(request, id):
     context["form"] = form
  
     return render(request, "theapp/update_post.html", context)
+
+
+# delete post
+def delete_post(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
+ 
+    # fetch the object related to passed id
+    obj = get_object_or_404(Post, id = id)
+ 
+ 
+    if request.method =="POST":
+        # delete the object post
+        obj.delete()
+        # after deleting redirect to
+        # the list of post
+        return HttpResponseRedirect("/theapp/list")
+ 
+    return render(request, "theapp/delete_post.html", context)

@@ -31,3 +31,13 @@ def list_post(request):
     context["dataset"] = Post.objects.all()
          
     return render(request, "theapp/list_post.html", context)
+
+def post_detail(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
+ 
+    # add the dictionary during initialization
+    context["data"] = Post.objects.get(id = id)
+         
+    return render(request, "theapp/post_detail.html", context)

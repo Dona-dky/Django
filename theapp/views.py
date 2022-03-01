@@ -21,3 +21,13 @@ def create_post(request):
     
     context['form']= form
     return render(request, 'theapp/create_post.html', context)
+
+def list_post(request):
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
+ 
+    # add the dictionary during initialization
+    context["dataset"] = Post.objects.all()
+         
+    return render(request, "theapp/list_post.html", context)

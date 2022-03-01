@@ -5,7 +5,7 @@ from django.db import models
 class Post(models.Model):
     title = models.CharField(max_length = 255)
     description = models.TextField(blank=True)
-    created_on = models.DateField(blank=True)
+    created_on = models.DateField(blank=True, null=True)
 
     # We add a Meta class to specify our model
     class Meta:

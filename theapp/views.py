@@ -20,6 +20,7 @@ def create_post(request):
     form = PostForm(request.POST or None)
     if form.is_valid():
         form.save()
+        return HttpResponseRedirect("/theapp/list")
     
     context['form']= form
     return render(request, 'theapp/create_post.html', context)

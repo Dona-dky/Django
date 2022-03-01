@@ -49,3 +49,27 @@ def read_product(request, id):
     return render(request, "beautyflowers/crud/read_product.html", context)
 
 
+# update product
+def update_product(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
+ 
+    # fetch the object related to passed id
+    obj = get_object_or_404(Product, id = id)
+ 
+    # pass the object as instance in form
+    form = ProductForm(request.POST or None, instance = obj)
+ 
+    # save the data from the form and
+    # redirect to detail_view
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/" +id)
+ 
+    # add form dictionary to context
+    context["form"] = form
+ 
+    return render(request, "beautyflowers/crud/update_product.html", context)
+
+

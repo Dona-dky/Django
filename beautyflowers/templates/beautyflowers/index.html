@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
 </head>
+
 <body>
     <h1>Welcome To Beauty Flowers Shop !</h1>
+    <div class="main">
+
+        {% for data in dataset %}.
+        <div class="product">
+            <h3>{{ data.name }}</h3>
+            <h4>{{ data.description }}</h4><br />
+            <p>{{ data.price }}</p>
+        </div>
+
+        <hr />
+
+        {% endfor %}
+    </div>
 </body>
+
 </html>

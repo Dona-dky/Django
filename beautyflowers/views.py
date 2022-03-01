@@ -24,3 +24,16 @@ def create_product(request):
     
     context['form']= form
     return render(request, 'beautyflowers/crud/create_product.html', context)
+
+
+def list_of_products(request):
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
+ 
+    # add the dictionary during initialization
+    context["dataset"] = Product.objects.all()
+         
+    return render(request, "beautyflowers/index.html", context)
+
+

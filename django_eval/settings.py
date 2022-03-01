@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'theapp.apps.TheappConfig',
-    'beautyflowers.apps.BeautyflowersConfig'
+    'beautyflowers.apps.BeautyflowersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

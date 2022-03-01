@@ -5,8 +5,8 @@ from django.shortcuts import render
 from chat.models import Room
 
 #
-def home_view(request):
-    return render(request, 'chat/home.html', {
+def index_view(request):
+    return render(request, 'chat/index.html', {
         'rooms': Room.objects.all(),
     })
 

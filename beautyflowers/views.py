@@ -17,7 +17,7 @@ def create_product(request):
     context ={}
 
     # add the dictionary during initialization
-    form = ProductForm(request.POST or None)
+    form = ProductForm(request.POST or None, request.FILES)
     if form.is_valid():
         form.save()
         return HttpResponseRedirect("/list")

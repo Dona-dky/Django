@@ -20,7 +20,7 @@ def create_product(request):
     form = ProductForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect("/theapp/list")
+        return HttpResponseRedirect("/list")
     
     context['form']= form
-    return render(request, 'theapp/create_post.html', context)
+    return render(request, 'beautyflowers/crud/create_product.html', context)

@@ -7,9 +7,9 @@ from .models import Product
 from .forms import ProductForm
 
 
-# Create your views here.
-def index(request):
-    return render(request,'beautyflowers/index.html')
+# # Create your views here.
+# def index(request):
+#     return render(request,'beautyflowers/index.html')
 
 def create_product(request):
     # dictionary for initial data with
@@ -20,7 +20,7 @@ def create_product(request):
     form = ProductForm(request.POST or None, request.FILES)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect("/list")
+        return HttpResponseRedirect("/")
     
     context['form']= form
     return render(request, 'beautyflowers/crud/create_product.html', context)
@@ -34,7 +34,7 @@ def list_of_products(request):
     # add the dictionary during initialization
     context["dataset"] = Product.objects.all()
          
-    return render(request, "beautyflowers/index.html", context)
+    return render(request, "beautyflowers/shop.html", context)
 
 
 # after updating it will redirect to post_detail
@@ -59,10 +59,11 @@ def update_product(request, id):
     obj = get_object_or_404(Product, id = id)
  
     # pass the object as instance in form
-    form = ProductForm(request.POST or None, instance = obj)
+    form = ProductForm(request.POST or None, request.FILES or None, instance = obj)
  
     # save the data from the form and
     # redirect to detail_view
+    
     if form.is_valid():
         form.save()
         return HttpResponseRedirect("/" +id)
@@ -73,3 +74,22 @@ def update_product(request, id):
     return render(request, "beautyflowers/crud/update_product.html", context)
 
 
+# delete product
+def delete_product(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
+ 
+    # fetch the object related to passed id
+    obj = get_object_or_404(Product, id = id)
+ 
+ 
+    if request.method =="POST":
+        # delete the object post
+        obj.delete()
+        # after deleting redirect to
+        # the list of post
+        return HttpResponseRedirect("/")
+ 
+    return render(request, "beautyflowers/crud/delete_product.html", context)
+    

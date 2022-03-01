@@ -17,9 +17,10 @@
         <p>{{ data.price }}</p>
 
         {% if data.image %}
-        <img class="card-img" src="{{ data.image.url }}" alt="img card" width=800 />
+        <img class="card-img" src="{{ data.image.url }}" alt="{{ data.alt }}" width=800 />
         {% endif %}
 
+        <button><a href="/">Back To The List</a></button>
 
         <button><a href="">Buy it</a></button>
 

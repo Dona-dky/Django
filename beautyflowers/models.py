@@ -4,10 +4,10 @@ import os
 # Create your models here.
 class Product(models.Model):
     name = models.CharField(max_length=220)
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=255, unique=True, blank=True)
     price = models.DecimalField(max_digits=4, decimal_places=2)
     description = models.TextField(blank=True)
-    image = models.ImageField(null=True, blank=False, upload_to = "beautyflowers/static/img/")
+    image = models.ImageField(null=True, blank=True, upload_to = "beautyflowers/static/img/")
     alt = models.CharField(max_length=50, null=True, blank=True)
     quantity = models.IntegerField()
     last_modified = models.DateTimeField(auto_now_add = True)

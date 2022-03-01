@@ -34,14 +34,15 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'theapp.apps.TheappConfig',
     'beautyflowers.apps.BeautyflowersConfig',
-    'chat',
-    #'socketio_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # 'chats',
+    # 'chat_messages',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,7 @@ ROOT_URLCONF = 'django_eval.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

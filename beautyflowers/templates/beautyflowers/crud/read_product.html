@@ -1,31 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends '../main.html' %}
+{% load static %}
+{% block content %}
+<div class="main">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Details of product</title>
-</head>
+    <!-- Specify fields to be displayed -->
+    <h3>{{ data.name }}</h3>
+    <h4>{{ data.description }}</h4><br />
+    <p>{{ data.price }} $</p>
 
-<body>
-    <div class="main">
+    {% if data.image %}
+    <img class="card-img" src="{{ data.image.url }}" alt="{{ data.alt }}" width=800 />
+    {% endif %}
 
-        <!-- Specify fields to be displayed -->
-        <h3>{{ data.name }}</h3>
-        <h4>{{ data.description }}</h4><br />
-        <p>{{ data.price }} $</p>
+    <button><a href="/">Back To The List</a></button>
 
-        {% if data.image %}
-        <img class="card-img" src="{{ data.image.url }}" alt="{{ data.alt }}" width=800 />
-        {% endif %}
-
-        <button><a href="/">Back To The List</a></button>
-
-        <button><a href="">Buy it</a></button>
+    <button><a href="">Buy it</a></button>
 
 
-    </div>
-</body>
-
-</html>
+</div>
+{% endblock content %}

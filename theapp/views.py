@@ -6,10 +6,10 @@ from .models import Post
 from .forms import PostForm
 
 # Create your views here.
-def index():
-    return render('theapp/index.html')
+def index(request):
+    return render(request,'theapp/index.html')
 
-def new_post(request):
+def create_post(request):
     # dictionary for initial data with
     # field names as keys
     context ={}
@@ -20,4 +20,4 @@ def new_post(request):
         form.save()
     
     context['form']= form
-    return render(request, 'theapp/new_post.html', context)
+    return render(request, 'theapp/create_post.html', context)

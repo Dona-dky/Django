@@ -14,11 +14,17 @@
 
         {% for data in dataset %}.
         <div class="product">
+            {% if data.image %}
+            <img class="card-img" src="{{ data.image.url }}" alt="{{ data.alt }}" width=800 />
+            {% endif %}
             <h3>{{ data.name }}</h3>
-            <h4>{{ data.description }}</h4><br />
-            <p>{{ data.price }}</p>
+            <p>{{ data.price }} $</p>
             <button><a href="/{{data.id}}">More About Product</a></button>
         </div>
+
+        {% if user.is_authenticated %}
+        <button><a href="/{{data.id}}/update">Update</a></button>
+        {% endif %}
 
         <hr />
 

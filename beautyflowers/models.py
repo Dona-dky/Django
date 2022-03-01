@@ -10,6 +10,7 @@ class Product(models.Model):
     image = models.ImageField(null=True, blank=True, upload_to = "beautyflowers/static/img/")
     alt = models.CharField(max_length=50, null=True, blank=True)
     quantity = models.IntegerField()
+    #max_product = models.IntegerField()
     last_modified = models.DateTimeField(auto_now_add = True)
     created_on = models.DateField(blank=True, null=True)
 

@@ -34,7 +34,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'theapp.apps.TheappConfig',
     'beautyflowers.apps.BeautyflowersConfig',
-    'chat.apps.ChatConfig',
+    'chat',
+    #'socketio_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,16 +73,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'django_eval.wsgi.application'
-ASGI_APPLICATION = 'core.asgi.application'
 
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
-        },
-    },
-}
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases

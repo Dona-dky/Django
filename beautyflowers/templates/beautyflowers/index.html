@@ -17,6 +17,10 @@
             <h3>{{ data.name }}</h3>
             <h4>{{ data.description }}</h4><br />
             <p>{{ data.price }}</p>
+            <form action="{% url 'posts:post' slug=post.slug %}">
+                <button class="btn btn-submit">More About Product</button>
+            </form>
+            <!-- <button><a href="/{id}">More About Product</a></button> -->
         </div>
 
         <hr />

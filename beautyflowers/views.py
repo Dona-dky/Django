@@ -37,3 +37,15 @@ def list_of_products(request):
     return render(request, "beautyflowers/index.html", context)
 
 
+# after updating it will redirect to post_detail
+def read_product(request, id):
+    # dictionary for initial data with
+    # field names as keys
+    context ={}
+ 
+    # add the dictionary during initialization
+    context["data"] = Product.objects.get(id = id)
+         
+    return render(request, "beautyflowers/crud/read_product.html", context)
+
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Details of product</title>
+</head>
+<body>
+    <div class="main">
+     
+        <!-- Specify fields to be displayed -->
+        <h3>{{ data.name }}</h3>
+        <h4>{{ data.description }}</h4><br />
+        <p>{{ data.price }}</p>
+        <img
+        class="card-img"
+        src="{{ data.image.url }}"
+        alt="img card"
+      />
+        
+
+        <button><a href="">Buy it</a></button>
+
+     
+    </div>
+</body>
+</html>

@@ -1,4 +1,5 @@
 from django.db import models
+import os
 
 # Create your models here.
 class Product(models.Model):
@@ -6,7 +7,7 @@ class Product(models.Model):
     slug = models.SlugField()
     price = models.DecimalField(max_digits=4, decimal_places=2)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to = "beautyflowers/static/img/", null=True, blank=True)
+    image = models.ImageField(null=True, blank=False, upload_to = "beautyflowers/static/img/")
     alt = models.CharField(max_length=50, null=True, blank=True)
     quantity = models.IntegerField()
     last_modified = models.DateTimeField(auto_now_add = True)

@@ -2,7 +2,7 @@ from turtle import mode
 from django.db import models
 
 # Create your models here.
-class BlogPost(models.Model):
+class Post(models.Model):
     title = models.CharField(max_length = 255)
     description = models.TextField(blank=True)
     created_on = models.DateField(blank=True)

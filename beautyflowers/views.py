@@ -92,4 +92,7 @@ def delete_product(request, id):
         return HttpResponseRedirect("/")
  
     return render(request, "beautyflowers/crud/delete_product.html", context)
-    
+
+
+def cart_products(request):
+    return render(request,'beautyflowers/cart.html')

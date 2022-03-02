@@ -1,27 +1,41 @@
+{% extends './main.html' %}
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+{% block content %}
 
-<h3>store</h3>
-<img src="{% static 'images/cart.png' %}">
+<h1>Welcome To Beauty Flowers Shop !</h1>
+<div class="main flex">
 
-    <h1>Welcome To Beauty Flowers Shop !</h1>
-    <div class="main">
+    {% for data in dataset %}
 
-        {% for data in dataset %}.
-        <div class="product">
+
+    <div class="col-lg-4">
+        <div class="img">
             {% if data.image %}
-            <img class="card-img" src="{{ data.image.url }}" alt="{{ data.alt }}" width=800 />
+            <img class="card-img thumbnail" src="{{ data.image.url }}" alt="{{ data.alt }}" />
             {% endif %}
-            <h3>{{ data.name }}</h3>
-            <p>{{ data.price }} $</p>
-            <button><a href="/{{data.id}}">More About Product</a></button>
         </div>
 
-        {% if user.is_authenticated %}
-        <button><a href="/{{data.id}}/update">Update</a></button>
-        {% endif %}
+        <div class="box-element product">
+            <h6><strong>{{ data.name }}</strong></h6>
+            <hr>
+            <div class="bottom_card">
+                <div class="buttons_card">
+                    <button class="btn btn-outline-secondary add-btn">Add to Cart</button>
+                    <a class="btn btn-outline-success" href="/{{data.id}}">See Product</a>
+                    <!-- {% if user.is_authenticated %}
+            <a class="btn btn-outline-success" href="/{{data.id}}/update">Update</a>
+            {% endif %} -->
+                </div>
 
-        <hr />
+                <div class="price">
+                    <h4><strong>{{ data.price }}$</strong></h4>
+                </div>
 
-        {% endfor %}
+            </div>
+        </div>
     </div>
+
+
+    {% endfor %}
+</div>
+{% endblock content %}

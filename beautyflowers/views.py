@@ -85,6 +85,7 @@ def update_product(request, slug):
 
 
 # delete product
+@login_required
 def delete_product(request, slug):
     # dictionary for initial data with
     # field names as keys
@@ -103,6 +104,3 @@ def delete_product(request, slug):
  
     return render(request, "beautyflowers/crud/delete_product.html", context)
 
-
-def cart_products(request):
-    return render(request,'beautyflowers/cart.html')

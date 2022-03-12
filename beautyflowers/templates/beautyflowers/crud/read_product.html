@@ -21,15 +21,21 @@
                 <!-- Security token by Django -->
                 {% csrf_token %}
                 <input type="number" name="quantity" />
-         
+
                 <input class="btn btn-outline-secondary add-btn" type="submit" value="Buy">
             </form>
 
         </div>
 
         <div class="buttons">
-            <a href="/" class="btn btn-outline-secondary add-btn">Back To The List</a>
+            
+            {% if user.is_authenticated %}
+            <a href="/{{data.slug}}/update" class="btn btn-outline-secondary add-btn">Update this product</a>
+            <a href="/{{data.slug}}/delete" class="btn btn-outline-secondary add-btn">Delete this product</a>
+            {% endif %}
         </div>
+
+        <a href="/" class="btn btn-outline-secondary add-btn">Back To The List</a>
 
     </div>
 

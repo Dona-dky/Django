@@ -1,21 +1,37 @@
 {% extends '../main.html' %}
 {% load static %}
 {% block content %}
-<div class="main">
+<div class="main" id="display_product">
 
-    <!-- Specify fields to be displayed -->
-    <h3>{{ data.name }}</h3>
-    <h4>{{ data.description }}</h4><br />
-    <p>{{ data.price }} $</p>
+    <div class="image_product">
+        {% if data.image %}
+        <img class="card-img" src="{{ data.image.url }}" alt="{{ data.alt }}" width=800 />
+        {% endif %}
+    </div>
 
-    {% if data.image %}
-    <img class="card-img" src="{{ data.image.url }}" alt="{{ data.alt }}" width=800 />
-    {% endif %}
+    <div class="possibilities">
+        <div class="info">
+            <!-- Specify fields to be displayed -->
+            <h2>{{ data.name }}</h2>
+            <h4>{{ data.description }}</h4><br /><br />
+            <p>{{ data.price }} $</p>
+            <p> You have bought some {{data.quantity}} !</p>
 
-    <button><a href="/">Back To The List</a></button>
+            <form method="POST" enctype="multipart/form-data">
+                <!-- Security token by Django -->
+                {% csrf_token %}
+                <input type="number" name="quantity" />
+         
+                <input class="btn btn-outline-secondary add-btn" type="submit" value="Buy">
+            </form>
 
-    <button><a href="">Buy it</a></button>
+        </div>
 
+        <div class="buttons">
+            <a href="/" class="btn btn-outline-secondary add-btn">Back To The List</a>
+        </div>
+
+    </div>
 
 </div>
 {% endblock content %}

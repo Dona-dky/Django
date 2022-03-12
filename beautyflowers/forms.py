@@ -20,3 +20,15 @@ class ProductForm(forms.ModelForm):
 			"alt",
 			"quantity",
         ]
+
+class QuantityForm(forms.ModelForm):
+
+	# create meta class
+	class Meta:
+		# specify model to be used
+		model = Product
+
+		# specify fields to be used
+		fields = [
+			"quantity",
+        ]

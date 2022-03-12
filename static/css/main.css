@@ -120,3 +120,29 @@ h4{
     justify-content: space-between;
     align-items: center;
 }
+
+#display_product{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	border: 2px solid gray;
+	/* background-color: rgb(177, 107, 17); */
+	padding: 25px;
+}
+
+.image_product{
+	display: flex;
+	border: 1px solid black;
+}
+
+.image_product img{
+	max-width: 400px;
+	max-height: 400px;
+}
+
+.possibilities{
+	min-width: 450px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}

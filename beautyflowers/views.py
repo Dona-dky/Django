@@ -5,12 +5,13 @@ from django.shortcuts import (get_object_or_404,
 
 from .models import Product
 from .forms import ProductForm
-
+from .forms import QuantityForm
+from django.contrib.auth.decorators import login_required
 
 # # Create your views here.
 # def index(request):
 #     return render(request,'beautyflowers/index.html')
-
+@login_required
 def create_product(request):
     # dictionary for initial data with
     # field names as keys
@@ -38,25 +39,34 @@ def list_of_products(request):
 
 
 # after updating it will redirect to post_detail
-def read_product(request, id):
+def read_product(request, slug):
     # dictionary for initial data with
     # field names as keys
     context ={}
+
+    # fetch the object related to passed slug
+    obj = get_object_or_404(Product, slug = slug)
+
+    # add the dictionary during initialization
+    form = QuantityForm(request.POST or None, instance = obj)
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/" + slug)
  
     # add the dictionary during initialization
-    context["data"] = Product.objects.get(id = id)
+    context["data"] = Product.objects.get(slug = slug)
          
     return render(request, "beautyflowers/crud/read_product.html", context)
 
 
 # update product
-def update_product(request, id):
+def update_product(request, slug):
     # dictionary for initial data with
     # field names as keys
     context ={}
  
-    # fetch the object related to passed id
-    obj = get_object_or_404(Product, id = id)
+    # fetch the object related to passed slug
+    obj = get_object_or_404(Product, slug = slug)
  
     # pass the object as instance in form
     form = ProductForm(request.POST or None, request.FILES or None, instance = obj)
@@ -66,7 +76,7 @@ def update_product(request, id):
     
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect("/" +id)
+        return HttpResponseRedirect("/")
  
     # add form dictionary to context
     context["form"] = form
@@ -75,13 +85,13 @@ def update_product(request, id):
 
 
 # delete product
-def delete_product(request, id):
+def delete_product(request, slug):
     # dictionary for initial data with
     # field names as keys
     context ={}
  
-    # fetch the object related to passed id
-    obj = get_object_or_404(Product, id = id)
+    # fetch the object related to passed slug
+    obj = get_object_or_404(Product, slug = slug)
  
  
     if request.method =="POST":

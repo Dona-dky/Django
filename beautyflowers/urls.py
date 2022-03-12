@@ -5,8 +5,7 @@ app_name ='beautyflowers'
 urlpatterns = [
     path('create', views.create_product, name='create_product'),
     path('', views.list_of_products, name='list_of_products'),
-    path('cart', views.cart_products, name='cart_products'),
-    path('<id>', views.read_product ),
-    path('<id>/update', views.update_product ),
-    path('<id>/delete', views.delete_product ),
+    path('<slug>', views.read_product ),
+    path('<slug>/update', views.update_product ),
+    path('<slug>/delete', views.delete_product ),
 ]
